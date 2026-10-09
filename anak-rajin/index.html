@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0B1220">
+  <meta name="description" content="Anak Rajin.exe — Personal Survival Operating System buat San.">
+  <title>Anak Rajin.exe</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Langsung ke konten</a>
+  <div class="stars" aria-hidden="true"></div>
+
+  <!-- ===================== BOOT SEQUENCE ===================== -->
+  <section id="boot" class="screen boot is-active" aria-label="Layar boot Anak Rajin.exe">
+    <div class="terminal">
+      <div class="terminal__bar">
+        <span class="dot dot--pink"></span><span class="dot dot--yellow"></span><span class="dot dot--blue"></span>
+        <span class="terminal__title">boot.log — Anak Rajin.exe</span>
+        <button type="button" id="skipBoot" class="btn-ghost btn-small">SKIP</button>
+      </div>
+      <div id="bootLog" class="terminal__body" role="log" aria-live="polite"></div>
+      <div id="bootActions" class="boot__actions" hidden>
+        <button type="button" id="btnGas" class="btn btn--primary">GAS LAH</button>
+        <button type="button" id="btnRebahan" class="btn btn--soft">REBAHAN</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DASHBOARD ===================== -->
+  <div id="app" class="screen app" hidden>
+    <header class="topbar">
+      <button type="button" id="logo" class="logo" aria-label="Logo Anak Rajin.exe">
+        <img src="assets/icons/logo.svg" alt="" width="32" height="32">
+        <span>Anak Rajin<span class="accent">.exe</span></span>
+      </button>
+      <nav class="nav" aria-label="Navigasi utama">
+        <button type="button" class="nav__btn is-active" data-target="panel-dashboard" aria-current="page">Dashboard</button>
+        <button type="button" class="nav__btn" data-target="panel-support">Support</button>
+        <button type="button" class="nav__btn" data-target="panel-achievements">Achievement</button>
+      </nav>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <!-- Dashboard -->
+      <section id="panel-dashboard" class="panel is-active" aria-labelledby="dashTitle">
+        <div class="hero">
+          <div>
+            <p class="eyebrow">// session: sani_safitri@anak-rajin</p>
+            <h1 id="dashTitle">Sani’s Control Panel</h1>
+            <p class="lead">Selamat datang kembali, San. Sistem ini dibuat untuk membantu kamu bertahan, bukan menambah pekerjaan baru.</p>
+          </div>
+          <button type="button" id="planet" class="planet" aria-label="Planet misterius. Kayaknya bisa disapa.">
+            <img src="assets/images/planet.svg" alt="" width="128" height="128">
+          </button>
+        </div>
+
+        <div id="statusGrid" class="grid grid--status"></div>
+
+        <div class="card">
+          <div class="card__head">
+            <h2>Currently Running Tasks</h2>
+            <span class="mono muted" id="taskCount"></span>
+          </div>
+          <ul id="taskList" class="tasks"></ul>
+        </div>
+
+        <div class="reminder">
+          <span class="mono reminder__tag">NOTE</span>
+          <p>Kamu tidak harus menyelesaikan semuanya sekaligus. Satu hal yang selesai tetap sebuah kemajuan.</p>
+        </div>
+
+        <div class="card strong-meter">
+          <div class="card__head">
+            <h2>STRONG Meter™</h2>
+            <span class="mono muted">STRONG = Stress Tak Tertolong</span>
+          </div>
+          <div class="meter" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="87" aria-label="STRONG Meter">
+            <div id="meterFill" class="meter__fill"></div>
+          </div>
+          <p id="meterText" class="mono small">Level saat ini: 87% STRONG. Rekomendasi sistem: minum air dulu.</p>
+          <button type="button" id="btnCalm" class="btn btn--soft btn-small">TURUNKAN STRONG</button>
+        </div>
+      </section>
+
+      <!-- Emergency Support -->
+      <section id="panel-support" class="panel" aria-labelledby="supportTitle" hidden>
+        <p class="eyebrow">// emergency.sys</p>
+        <h1 id="supportTitle">Emergency Support Center</h1>
+        <p class="lead">Pilih kondisi kamu sekarang. Nggak ada jawaban yang salah, cuma ada tombol yang lucu.</p>
+        <div id="supportGrid" class="grid grid--support"></div>
+        <div class="card coffee">
+          <img src="assets/icons/coffee.svg" alt="" width="48" height="48">
+          <div>
+            <h2>Pantry Module</h2>
+            <p class="muted small">Layanan kopi digital. Ketersediaan tergantung kondisi dompet developer.</p>
+          </div>
+          <button type="button" id="btnCoffee" class="btn btn--warn btn-small">REQUEST COFFEE</button>
+        </div>
+      </section>
+
+      <!-- Achievements -->
+      <section id="panel-achievements" class="panel" aria-labelledby="achTitle" hidden>
+        <p class="eyebrow">// achievements.dat</p>
+        <h1 id="achTitle">Achievement Center</h1>
+        <p class="lead">Tekan lencananya buat membuka. Disclaimer: sistem ini nggak mengukur produktivitas apa pun, cuma pura-pura canggih.</p>
+        <div id="achGrid" class="grid grid--ach"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="mono small">Anak Rajin.exe v1.0 · dibuat oleh Kautsar Industries™ · uptime: cukup lama</p>
+      <p class="mono small hint">psst... planet di atas kelihatannya kesepian. Coba sapa dia beberapa kali.</p>
+    </footer>
+  </div>
+
+  <!-- ===================== SECRET ROOM ===================== -->
+  <section id="secret" class="screen secret" aria-labelledby="secretTitle" hidden>
+    <div class="secret__box">
+      <p class="eyebrow">// secret_room.txt — akses diberikan</p>
+      <h1 id="secretTitle" tabindex="-1">Secret Room</h1>
+      <div id="secretMessage" class="secret__msg"></div>
+      <button type="button" id="btnLeaveSecret" class="btn btn--soft">BALIK KE DASHBOARD</button>
+    </div>
+  </section>
+
+  <!-- ===================== MODAL ===================== -->
+  <dialog id="modal" class="modal" aria-labelledby="modalTitle" aria-describedby="modalBody">
+    <div class="modal__inner">
+      <div class="modal__bar">
+        <span class="mono small" id="modalTag">support.msg</span>
+        <button type="button" class="modal__x" data-close aria-label="Tutup pesan">×</button>
+      </div>
+      <h2 id="modalTitle"></h2>
+      <p id="modalBody"></p>
+      <button type="button" class="btn btn--primary" data-close>OKE, NOTED</button>
+    </div>
+  </dialog>
+
+  <!-- ===================== TOAST ===================== -->
+  <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+
+  <script src="js/messages.js"></script>
+  <script src="js/easter-eggs.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
